@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    url: ${TEST_DB_URL:jdbc:postgresql://localhost:5432/discord_clone_test}
+  flyway:
+    # testele sterg si recreeaza schema la fiecare pornire
+    clean-disabled: false
