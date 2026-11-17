@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: ecou
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/discord_clone}
+    username: ${DB_USERNAME:discord}
+    password: ${DB_PASSWORD:discord}
+  jpa:
+    hibernate:
+      # Schema e gestionata DOAR de Flyway; Hibernate doar verifica ca entitatile se potrivesc
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  profiles:
+    # "dev" porneste pagina de debug de la /; scoate-l cand predai proiectul
+    active: dev
+
+app:
+  jwt:
+    # cheia cu care semnam token-urile (minim 32 de caractere); in productie vine din variabila JWT_SECRET
+    secret: ${JWT_SECRET:dev-secret-schimba-ma-inainte-de-productie-1234567890}
+    ttl: 24h
